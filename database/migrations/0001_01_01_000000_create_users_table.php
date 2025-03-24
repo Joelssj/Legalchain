@@ -7,12 +7,15 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Ejecuta las migraciones.
+     *
+     * @return void
      */
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            // Cambiar la columna id para usar UUID en lugar de autoincremento
+            $table->uuid('id')->primary();  // UUID como clave primaria
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -39,6 +42,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
     public function down(): void
     {

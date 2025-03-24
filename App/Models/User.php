@@ -112,63 +112,15 @@ class User extends Authenticatable implements MustVerifyEmail
 
 
 
-// namespace App\Models;
 
-// use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Illuminate\Foundation\Auth\User as Authenticatable;
-// use Illuminate\Notifications\Notifiable;
-// use Illuminate\Support\Str;
 
-// class User extends Authenticatable
-// {
-//     use HasFactory, Notifiable;
 
-//     protected $primaryKey = 'id';
-//     public $incrementing = false;
-//     protected $keyType = 'string';
 
-//     protected $fillable = [
-//         'id', // Incluir el id
-//         'name',
-//         'email',
-//         'password',
-//     ];
 
-//     protected $hidden = [
-//         'password',
-//         'remember_token',
-//     ];
 
-//     protected $casts = [
-//         'id' => 'string',
-//         'email_verified_at' => 'datetime',
-//     ];
 
-//     protected static function boot()
-//     {
-//         parent::boot();
 
-//         static::creating(function ($model) {
-//             if (empty($model->id)) {
-//                 $model->id = (string) Str::uuid();
-//             }
-//         });
-//     }
 
-//     /**
-//      * Personalizar el orden de los atributos en el JSON.
-//      */
-//     public function toArray()
-//     {
-//         $array = parent::toArray();
 
-//         // Reordenar para que `id` aparezca al principio
-//         return [
-//             'id' => $this->id,
-//             'name' => $this->name,
-//             'email' => $this->email,
-//             'created_at' => $this->created_at,
-//             'updated_at' => $this->updated_at,
-//         ];
-//     }
-// }
+
+
