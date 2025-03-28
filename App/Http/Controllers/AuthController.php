@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Subscription;  // Asegúrate de importar el modelo Subscription
+use App\Models\Subscription;  
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Mail;
 class AuthController extends Controller
 {
     /**
-     * Registro de un nuevo usuario.
+     * Registro de usuario
      */
     public function register(Request $request)
     {
@@ -34,7 +34,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            // Los campos de verificación se manejarán automáticamente gracias al modelo
+            // Los campos de verificación se manejarán automáticamenteeee
         ]);
     
         // Enviar el código de verificación por correo
@@ -59,10 +59,6 @@ class AuthController extends Controller
     }
     
 
-    /**
-     * Verificar el código de verificación.
-     */
-// AuthController.php
 
 public function verifyCode(Request $request)
 {
@@ -93,13 +89,12 @@ public function verifyCode(Request $request)
 
         // Crear la suscripción con plan 'basic'
         $subscription = Subscription::create([
-            'user_id' => $user->id,  // Relacionamos la suscripción con el usuario
+            'user_id' => $user->id,  
             'plan' => 'basic',        // Plan básico por defecto
-            'start_date' => now(),    // Fecha de inicio
+            'start_date' => now(),  
             'end_date' => null,       // Sin fecha de finalización para el plan 'basic'
         ]);
 
-        // Respuesta exitosa
         return response()->json([
             'message' => 'Correo verificado exitosamente y suscripción creada.',
             'user' => $user->makeHidden(['password', 'verification_code']),
@@ -138,7 +133,6 @@ public function verifyCode(Request $request)
             ], 403);
         }
     
-        // Retornar la respuesta de inicio de sesión exitoso con el usuario
         return response()->json([
             'message' => 'Inicio de sesión exitoso',
             'user' => [
@@ -152,9 +146,6 @@ public function verifyCode(Request $request)
         ]);
     }
 
-    /**
-     * Cerrar sesión del usuario.
-     */
     public function logout()
     {
         Auth::logout();
